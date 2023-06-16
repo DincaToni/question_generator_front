@@ -1,0 +1,8 @@
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 36px;
+    margin: 0;
+}

@@ -1,0 +1,8 @@
+.MenuProfileSectionWrapper{
+    height: 315px;
+    box-sizing: border-box;
+    padding-top: 67.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

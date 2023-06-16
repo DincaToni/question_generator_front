@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+.MenuButton{
+    background-color: transparent;
+    height: 78.75px;
+    border-bottom: 2px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+    text-align: start;
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 24px;
+    padding-left: 25px;
+}
+
+.MenuButton:hover{
+    cursor: pointer;
+    background-color: rgba(217, 217, 217, 0.25);
+    
+}

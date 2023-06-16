@@ -1,0 +1,16 @@
+.SetTitleInput{
+    background-color: transparent;
+    border: none;
+    color: #80A3A2;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 28px;
+}
+
+.SetTitleInput::placeholder{
+    color: #80A3A2;
+}
+
+.SetTitleInput:focus{
+    outline: none;
+    border-bottom: 2px solid #80A3A2;
+}

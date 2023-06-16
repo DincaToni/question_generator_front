@@ -1,0 +1,16 @@
+.TextLabel-white{
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.TextLabel-black{
+    display: inline-block;
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
