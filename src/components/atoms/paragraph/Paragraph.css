@@ -1,0 +1,14 @@
+.Paragraph{
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+} 
+
+.Paragraph-white{
+    color: white;
+}
+.Paragraph-black{
+    color: black;
+}
+.Paragraph-align-center{
+    text-align: center;
+}

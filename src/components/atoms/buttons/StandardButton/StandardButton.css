@@ -1,0 +1,25 @@
+.StandardButton{
+    font-size: 16px;
+    filter: drop-shadow(5px 5px 5px RGB(0,0,0,0.15));
+
+}
+
+.StandardButton-medium{
+    height: 45px;
+    width: 200px;
+}
+
+.StandardButton-round{
+    border: 0px;
+    border-radius: 50px;
+}
+
+.StandardButton-green{
+    background-color: #80A3A2;
+    color: white;
+}
+
+.StandardButton-white{
+    background-color: white;
+    color: #80A3A2;
+}

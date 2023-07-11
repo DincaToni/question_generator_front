@@ -10,7 +10,6 @@ function Menu(props) {
         <MenuButton text="Acasa"/>
         <MenuButton text="Profil"/>
         <MenuButton text="Testele Mele"/>
-        <MenuButton text="Fisiere Încărcate"/>
         <MenuButton text="Delogare"/>
       </div>
     </>

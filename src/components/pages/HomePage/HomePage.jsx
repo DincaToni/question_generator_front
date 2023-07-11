@@ -10,7 +10,7 @@ function HomePage(props) {
       <div className="HomePageWrapper">
         <Menu />
         <div className="HomePageContent">
-          <Title />
+          <Title >INTRODUCETI TEXT/FISIER</Title>
           <MainForm/>
         </div>
       </div>

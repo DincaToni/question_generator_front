@@ -1,0 +1,38 @@
+.LoginPageWrapper{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.LoginWrapper{
+width: 60vw;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+}
+
+.RegisterOptionWrapper{
+width: 40vw;
+background-image: url('../../../assets/images/abstact-green2.jpg');
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.RegistrationOperationField{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.RegistrationOperationField-Title{
+    margin-bottom: 30px;
+}
+
+.RegistrationOperationField-Button{
+    margin-top: 30px;
+}

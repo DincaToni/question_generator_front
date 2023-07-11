@@ -1,0 +1,18 @@
+.RoundedForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.RoundedForm-RoundedInputWrapper{
+    margin-bottom: 12px;
+}
+
+.RoundedForm-Title{
+    margin-bottom: 30px;
+}
+
+.RoundedForm-Button{
+    margin-top: 18px;
+}
