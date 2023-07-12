@@ -15,13 +15,14 @@ import { toast } from "react-toastify";
 function HomePage(props) {
   const [prompt, setPrompt] = useState("");
   const [questionSets, setQuestionSets] = useState([]);
-  const [questionSetName, setQuestionSetname] = useState([]);
-  const [isNameHidden, setIsNameHidden] = useState([]);
+  const [questionSetName, setQuestionSetName] = useState(["Set întrebări 1"]);
+  const [isNameHidden, setIsNameHidden] = useState([false]);
   const [questionType, setQuestionType] = useState([]);
   const [nrOfQuestions, setNrOfQuestions] = useState([]);
-  const [isQuestionOrderRandomised, setIsQuestionOrderRandomised] = useState(
-    []
-  );
+  const [isQuestionOrderRandomised, setIsQuestionOrderRandomised] = useState([
+    false,
+  ]);
+  const [questionSetList, setQuestionSetList] = useState([0]);
   const quizzTitle = "Quizz";
 
   const navigate = useNavigate();
@@ -56,22 +57,44 @@ function HomePage(props) {
       toast.error(err?.data?.message || err.error);
     }*/
     console.log("prompt: " + prompt);
+    console.log("questionSetName: " + questionSetName);
     console.log("isNameHidden: " + isNameHidden);
     console.log("questionType: " + questionType);
     console.log("nrOfQuestions: " + nrOfQuestions);
     console.log("isQOrandomized: " + isQuestionOrderRandomised);
   };
 
-  const questionNameHandler = (e) => {
-    setQuestionSetname([...questionSetName, e.target.value]);
+  const addQuestionSetHandler = () => {
+    console.log("setList: " + questionSetList);
+    setQuestionSetList([...questionSetList, questionSetList.pop() + 1]);
+    console.log("setList: " + questionSetList);
+    setIsNameHidden([...isNameHidden, false]);
+    setIsQuestionOrderRandomised([...isQuestionOrderRandomised, false]);
+    setQuestionSetName([
+      ...questionSetName,
+      `Set întrebări ${questionSetList.pop() + 1}`,
+    ]);
   };
 
-  const isNameHiddenHandler = (e) => {
-    setIsNameHidden([...isNameHidden, e.target.value]);
+  const questionNameHandler = (index) => (e) => {
+    if (questionSetName[index] !== undefined) {
+      let newArr = [...questionSetName];
+      newArr[index] = e.target.value;
+
+      setQuestionSetName(newArr);
+    } else setQuestionSetName([...questionSetName, e.target.value]);
+  };
+
+  const isNameHiddenHandler = (index) => (e) => {
+    if (isNameHidden[index] !== undefined) {
+      let newArr = [...isNameHidden];
+      newArr[index] = e.target.checked;
+
+      setIsNameHidden(newArr);
+    } else setIsNameHidden([...isNameHidden, e.target.checked]);
   };
 
   const questionTypeHandler = (index) => (e) => {
-    console.log("ok" + questionType[index]);
     if (questionType[index] !== undefined) {
       let newArr = [...questionType];
       newArr[index] = e.target.value;
@@ -89,11 +112,17 @@ function HomePage(props) {
     } else setNrOfQuestions([...nrOfQuestions, e.target.value]);
   };
 
-  const isQuestionOrderRandomizedHandler = (e) => {
-    setIsQuestionOrderRandomised([
-      ...isQuestionOrderRandomised,
-      e.target.value,
-    ]);
+  const isQuestionOrderRandomizedHandler = (index) => (e) => {
+    if (isQuestionOrderRandomised[index] !== undefined) {
+      let newArr = [...isQuestionOrderRandomised];
+      newArr[index] = e.target.checked;
+
+      setIsQuestionOrderRandomised(newArr);
+    } else
+      setIsQuestionOrderRandomised([
+        ...isQuestionOrderRandomised,
+        e.target.checked,
+      ]);
   };
 
   const questionSetsHandler = () => {};
@@ -106,6 +135,8 @@ function HomePage(props) {
           <Title>INTRODUCETI TEXT</Title>
           <MainForm
             promptHandler={promptHandler}
+            questionSetList={questionSetList}
+            addQuestionSetHandler={addQuestionSetHandler}
             questionNameHandler={questionNameHandler}
             isNameHiddenHandler={isNameHiddenHandler}
             questionTypeHandler={questionTypeHandler}

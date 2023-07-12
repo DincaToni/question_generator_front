@@ -10,7 +10,10 @@ function AddSetCard(props) {
     <div>
       <div className="QuestionSetCard">
         <div className="SetCardTitleWrapper">
-          <SetTitleInput setNo={props.setNo} />
+          <SetTitleInput
+            setNo={props.setNo}
+            onChange={props.questionNameHandler}
+          />
         </div>
         <div className="SetCardContent">
           <ToggleSwitch color="black" onClick={props.isNameHiddenHandler}>
@@ -38,4 +41,3 @@ function AddSetCard(props) {
 }
 
 export default AddSetCard;
-//questionNameHandler={props.questionNameHandler}
