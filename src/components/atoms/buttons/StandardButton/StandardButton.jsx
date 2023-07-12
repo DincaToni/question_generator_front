@@ -12,6 +12,7 @@ const StandardButton = (props) => {
           " StandardButton-" +
           props.colorScheme
         }
+        onClick={props.onClick}
       >
         {props.children}
       </button>

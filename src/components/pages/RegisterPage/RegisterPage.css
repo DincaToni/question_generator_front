@@ -1,0 +1,38 @@
+.RegisterPageWrapper{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.RegisterWrapper{
+width: 60vw;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+}
+
+.LoginOptionWrapper{
+width: 40vw;
+background-image: url('../../../assets/images/abstract-green3.jpg');
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.LoginOperationField{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.LoginOperationField-Title{
+    margin-bottom: 30px;
+}
+
+.LoginOperationField-Button{
+    margin-top: 30px;
+}

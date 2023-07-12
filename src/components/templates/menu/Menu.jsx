@@ -6,11 +6,11 @@ function Menu(props) {
   return (
     <>
       <div className="MenuWrapper">
-        <MenuProfileSection/>
-        <MenuButton text="Acasa"/>
-        <MenuButton text="Profil"/>
-        <MenuButton text="Testele Mele"/>
-        <MenuButton text="Delogare"/>
+        <MenuProfileSection />
+        <MenuButton text="Acasa" />
+        <MenuButton text="Profil" />
+        <MenuButton text="Testele Mele" />
+        <MenuButton text="Delogare" onClick={props.onLogout} />
       </div>
     </>
   );

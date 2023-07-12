@@ -12,11 +12,20 @@ const RoundedForm = (props) => {
       </div>
       {inputs.map((input) => (
         <div className="RoundedForm-RoundedInputWrapper">
-          <RoundedInput type={input.type} placeholder={input.placeholder} />
+          <RoundedInput
+            type={input.type}
+            placeholder={input.placeholder}
+            onChange={input.onChange}
+          />
         </div>
       ))}
       <div className="RoundedForm-Button">
-        <StandardButton size="medium" edge="round" colorScheme="green">
+        <StandardButton
+          size="medium"
+          edge="round"
+          colorScheme="green"
+          onClick={props.onSubmit}
+        >
           {props.buttonText}
         </StandardButton>
       </div>
