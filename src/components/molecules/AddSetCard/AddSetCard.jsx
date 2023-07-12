@@ -13,16 +13,21 @@ function AddSetCard(props) {
           <SetTitleInput setNo={props.setNo} />
         </div>
         <div className="SetCardContent">
-          <ToggleSwitch color="black">Ascunde titlul setului</ToggleSwitch>
+          <ToggleSwitch color="black" onClick={props.isNameHiddenHandler}>
+            Ascunde titlul setului
+          </ToggleSwitch>
           <div>
             <TextLabel color="black">Tip întrebări</TextLabel>
-            <QuestionTypeSelect />
+            <QuestionTypeSelect onChange={props.questionTypeHandler} />
           </div>
           <div>
-          <TextLabel color="black">Număr întrebări</TextLabel>
-            <NumberInput/>
+            <TextLabel color="black">Număr întrebări</TextLabel>
+            <NumberInput onChange={props.nrOfQuestionsHandler} />
           </div>
-          <ToggleSwitch color="black">
+          <ToggleSwitch
+            color="black"
+            onClick={props.isQuestionOrderRandomizedHandler}
+          >
             Amestecă ordinea întrebărilor în interiorul setului
           </ToggleSwitch>
           <button>Șterge set</button>
@@ -33,3 +38,4 @@ function AddSetCard(props) {
 }
 
 export default AddSetCard;
+//questionNameHandler={props.questionNameHandler}

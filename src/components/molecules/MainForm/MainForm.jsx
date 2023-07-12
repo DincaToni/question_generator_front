@@ -8,7 +8,7 @@ import AddSetCard from "../AddSetCard/AddSetCard";
 import { useState } from "react";
 
 function MainForm(props) {
-  const [questionSetList, setQuestionSetList] = useState([{ setNo: 1 }]);
+  const [questionSetList, setQuestionSetList] = useState([{ setNo: 0 }]);
   const addQuestionSet = () => {
     setQuestionSetList([
       ...questionSetList,
@@ -21,12 +21,21 @@ function MainForm(props) {
       <div className="MainForm">
         <TextNFileInput onChange={props.promptHandler} />
         {questionSetList.map((questionSet) => (
-          <AddSetCard setNo={questionSet.setNo} />
+          <AddSetCard
+            setNo={questionSet.setNo}
+            questionNameHandler={props.questionNameHandler}
+            isNameHiddenHandler={props.isNameHiddenHandler}
+            questionTypeHandler={props.questionTypeHandler(questionSet.setNo)}
+            nrOfQuestionsHandler={props.nrOfQuestionsHandler(questionSet.setNo)}
+            isQuestionOrderRandomizedHandler={
+              props.isQuestionOrderRandomizedHandler
+            }
+          />
         ))}
         <div className="BtnDistance">
           <NewQuestionSetButton onClick={addQuestionSet} />
         </div>
-        <GenerateButton />
+        <GenerateButton onClick={props.submitHandler} />
       </div>
     </div>
   );

@@ -1,12 +1,14 @@
-import "./GenerateButton.css"
+import "./GenerateButton.css";
 
-function GenerateButton(props){
-    let buttonType = props.type;
-    return(
-        <div>
-            <button className="generateButton">Generează Întrebări</button>
-        </div>
-    );
+function GenerateButton(props) {
+  let buttonType = props.type;
+  return (
+    <div>
+      <button className="generateButton" onClick={props.onClick}>
+        Generează Întrebări
+      </button>
+    </div>
+  );
 }
 
 export default GenerateButton;
