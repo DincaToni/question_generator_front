@@ -8,18 +8,21 @@ import AddSetCard from "../AddSetCard/AddSetCard";
 import { useState } from "react";
 
 function MainForm(props) {
-  const [questionSetList, setQuestionSetList] = useState([{setNo: 1}]);
-  const addQuestionSet = () =>{
-    setQuestionSetList([...questionSetList, {setNo: questionSetList.pop().setNo + 1}]);
-  }
+  const [questionSetList, setQuestionSetList] = useState([{ setNo: 1 }]);
+  const addQuestionSet = () => {
+    setQuestionSetList([
+      ...questionSetList,
+      { setNo: questionSetList.pop().setNo + 1 },
+    ]);
+  };
 
   return (
     <div className="MainFormWrapper">
       <div className="MainForm">
-        <TextNFileInput />
-        {
-          questionSetList.map(questionSet => <AddSetCard setNo={questionSet.setNo}/>)
-        }    
+        <TextNFileInput onChange={props.promptHandler} />
+        {questionSetList.map((questionSet) => (
+          <AddSetCard setNo={questionSet.setNo} />
+        ))}
         <div className="BtnDistance">
           <NewQuestionSetButton onClick={addQuestionSet} />
         </div>

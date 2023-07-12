@@ -7,8 +7,8 @@ function MenuProfileSection(props) {
     <>
       <div className="MenuProfileSectionWrapper">
         <div className="CircleBorder">
-            <MenuProfileImage source="https://reactjs.org/logo-og.png"/>
-            <TextLabel color="white">Popescu Ion</TextLabel>
+          <MenuProfileImage source="https://reactjs.org/logo-og.png" />
+          <TextLabel color="white">{props.profileSectionData}</TextLabel>
         </div>
       </div>
     </>

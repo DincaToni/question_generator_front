@@ -6,7 +6,7 @@ function Menu(props) {
   return (
     <>
       <div className="MenuWrapper">
-        <MenuProfileSection />
+        <MenuProfileSection profileSectionData={props.profileSectionData} />
         <MenuButton text="Acasa" />
         <MenuButton text="Profil" />
         <MenuButton text="Testele Mele" />

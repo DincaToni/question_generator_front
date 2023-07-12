@@ -7,6 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 import store from "./store";
 import { Provider } from "react-redux";
 import App from "./App";
@@ -18,7 +19,9 @@ import HomePage from "./components/pages/HomePage/HomePage";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index={true} path="/" element={<HomePage />} />
+      <Route path="" element={<PrivateRoute />}>
+        <Route index={true} path="/" element={<HomePage />} />
+      </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
     </Route>
