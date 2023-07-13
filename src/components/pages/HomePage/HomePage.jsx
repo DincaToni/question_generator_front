@@ -3,7 +3,7 @@ import "./HomePage.css";
 import Title from "../../atoms/labels/Title/Title";
 import Menu from "../../templates/menu/Menu";
 import MainForm from "../../molecules/MainForm/MainForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../../slices/authSlice";
@@ -14,8 +14,7 @@ import { toast } from "react-toastify";
 
 function HomePage(props) {
   const [prompt, setPrompt] = useState("");
-  const [questionSets, setQuestionSets] = useState([]);
-  const [questionSetName, setQuestionSetName] = useState(["Set întrebări 1"]);
+  const [questionSetName, setQuestionSetName] = useState([]);
   const [isNameHidden, setIsNameHidden] = useState([false]);
   const [questionType, setQuestionType] = useState([]);
   const [nrOfQuestions, setNrOfQuestions] = useState([]);
@@ -24,6 +23,13 @@ function HomePage(props) {
   ]);
   const [questionSetList, setQuestionSetList] = useState([0]);
   const quizzTitle = "Quizz";
+
+  useEffect(() => {
+    setQuestionSetName([
+      ...questionSetName,
+      `Set întrebări ${questionSetList[questionSetList.length - 1] + 1}`,
+    ]);
+  }, [questionSetList]);
 
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.auth);
@@ -49,31 +55,35 @@ function HomePage(props) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    /* try {
-      const res = await addQuizz({ quizzTitle, prompt, questionSets }).unwrap();
+    let questionSets = [];
+    questionSetList.map((questionSet) => {
+      questionSets.push({
+        setName: questionSetName[questionSet],
+        isSetNameHidden: isNameHidden[questionSet],
+        questionType: questionType[questionSet],
+        nrOfQuestions: nrOfQuestions[questionSet],
+        isQuestionOrderRandomised: isQuestionOrderRandomised[questionSet],
+      });
+    });
+    try {
+      const res = await addQuizz({
+        quizzTitle,
+        inputPrompt: prompt,
+        questionSets,
+      }).unwrap();
       dispatch(setCredentials({ ...res }));
       //navigate("/");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
-    }*/
-    console.log("prompt: " + prompt);
-    console.log("questionSetName: " + questionSetName);
-    console.log("isNameHidden: " + isNameHidden);
-    console.log("questionType: " + questionType);
-    console.log("nrOfQuestions: " + nrOfQuestions);
-    console.log("isQOrandomized: " + isQuestionOrderRandomised);
+    }
   };
 
   const addQuestionSetHandler = () => {
     console.log("setList: " + questionSetList);
     setQuestionSetList([...questionSetList, questionSetList.pop() + 1]);
-    console.log("setList: " + questionSetList);
+
     setIsNameHidden([...isNameHidden, false]);
     setIsQuestionOrderRandomised([...isQuestionOrderRandomised, false]);
-    setQuestionSetName([
-      ...questionSetName,
-      `Set întrebări ${questionSetList.pop() + 1}`,
-    ]);
   };
 
   const questionNameHandler = (index) => (e) => {
