@@ -15,12 +15,14 @@ import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./components/pages/LoginPage/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage/RegisterPage";
 import HomePage from "./components/pages/HomePage/HomePage";
+import MyQuizzes from "./components/pages/MyQuizzesPage/MyQuizzes";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="" element={<PrivateRoute />}>
         <Route index={true} path="/" element={<HomePage />} />
+        <Route path="/myQuizzes" element={<MyQuizzes />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />

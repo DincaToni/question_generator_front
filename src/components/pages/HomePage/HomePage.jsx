@@ -135,8 +135,6 @@ function HomePage(props) {
       ]);
   };
 
-  const questionSetsHandler = () => {};
-
   return (
     <>
       <div className="HomePageWrapper">
