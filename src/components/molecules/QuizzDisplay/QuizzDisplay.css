@@ -1,0 +1,19 @@
+.QuizzDisplayWrapper{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+}
+.QuizzDisplayWrapper-data{
+    display: flex;
+    flex-direction:column;
+}
+
+.QuizzDisplayWrapper-white{
+    background-color: white;
+
+}
+.QuizzDisplayWrapper-green{
+    background-color: #EDF5F3;
+}

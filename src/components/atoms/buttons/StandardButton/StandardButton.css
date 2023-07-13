@@ -23,3 +23,17 @@
     background-color: white;
     color: #80A3A2;
 }
+
+.StandardButton-blackOnGreen{
+    background-color: #EDF5F3;
+    color: black;
+}
+
+.StandardButton-blackOnWhite{
+    background-color: white;
+    color: black;
+}
+
+.StandardButton-icon-small{
+    width: fit-content;
+}

@@ -10,8 +10,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    getQuizzes: builder.mutation({
-      query: (data) => ({
+    getQuizzes: builder.query({
+      query: () => ({
         url: ` http://localhost:5000${QUIZZES_URL}/`,
         method: "GET",
       }),
@@ -19,4 +19,4 @@ export const usersApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAddQuizzMutation } = usersApiSlice;
+export const { useAddQuizzMutation, useGetQuizzesQuery } = usersApiSlice;

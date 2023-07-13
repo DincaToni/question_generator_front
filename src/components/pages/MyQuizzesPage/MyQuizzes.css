@@ -1,5 +1,6 @@
 .MyQuizzesPageWrapper{
     display: flex;
+    height: fit-content;
 }
 
 
@@ -13,8 +14,6 @@
 .MyQuizzes-card{
     width:100%;
     max-width: 90%;
-    height: 100px;
     margin-top: 60px;
     filter: drop-shadow(5px 5px 5px RGB(0,0,0,0.15));
-    background-color: green;
 }
