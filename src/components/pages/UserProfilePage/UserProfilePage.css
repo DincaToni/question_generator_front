@@ -1,0 +1,31 @@
+.UserProfilePageWrapper{
+    display: flex;
+}
+
+.UserProfile-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.ProfileImage{
+    margin-top: 60px;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.UserProfile-card{
+    width:100%;
+    max-width: 700px;
+    margin-top: -80px;
+    filter: drop-shadow(5px 5px 5px RGB(0,0,0,0.15));
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 90px;
+    padding-bottom: 50px;
+
+}
+

@@ -16,7 +16,12 @@ function Menu(props) {
             navigate("/");
           }}
         />
-        <MenuButton text="Profil" />
+        <MenuButton
+          text="Profil"
+          onClick={() => {
+            navigate("/userProfile");
+          }}
+        />
         <MenuButton
           text="Testele Mele"
           onClick={() => {

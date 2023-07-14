@@ -15,6 +15,7 @@ const RoundedForm = (props) => {
           <RoundedInput
             type={input.type}
             placeholder={input.placeholder}
+            value={input.value}
             onChange={input.onChange}
           />
         </div>

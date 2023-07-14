@@ -16,6 +16,7 @@ import LoginPage from "./components/pages/LoginPage/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage/RegisterPage";
 import HomePage from "./components/pages/HomePage/HomePage";
 import MyQuizzes from "./components/pages/MyQuizzesPage/MyQuizzes";
+import UserProfilePage from "./components/pages/UserProfilePage/UserProfilePage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route index={true} path="/" element={<HomePage />} />
         <Route path="/myQuizzes" element={<MyQuizzes />} />
+        <Route path="/userProfile" element={<UserProfilePage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
