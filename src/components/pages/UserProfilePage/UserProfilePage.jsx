@@ -10,6 +10,7 @@ import { setCredentials } from "../../../slices/authSlice";
 
 const UserProfilePage = (props) => {
   const { userInfo } = useSelector((state) => state.auth);
+  const token = userInfo.token;
 
   const [updateProfile, { isLoading, error }] = useUpdateUserMutation();
 
@@ -33,8 +34,9 @@ const UserProfilePage = (props) => {
           name,
           email,
           password,
+          token,
         }).unwrap();
-        dispatch(setCredentials({ ...res }));
+        dispatch(setCredentials({ ...res, token: token }));
         toast.success("Profil actualizat cu success");
       } catch (err) {
         toast.error(err?.data?.message || err.error);
