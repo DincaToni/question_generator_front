@@ -66,14 +66,16 @@ function HomePage(props) {
       });
     });
     try {
-      const res = await addQuizz({
+      await addQuizz({
         quizzTitle,
         inputPrompt: prompt,
         questionSets,
-      }).unwrap();
-      dispatch(setCredentials({ ...res }));
+      });
+      toast.success("Test adăugat");
+      //dispatch(setCredentials({ ...res }));
       //navigate("/");
     } catch (err) {
+      console.log(err?.data?.message || err.error);
       toast.error(err?.data?.message || err.error);
     }
   };
