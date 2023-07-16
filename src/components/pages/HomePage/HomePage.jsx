@@ -22,7 +22,7 @@ function HomePage(props) {
     false,
   ]);
   const [questionSetList, setQuestionSetList] = useState([0]);
-  const quizzTitle = "Quizz";
+  const quizzTitle = "Test";
 
   useEffect(() => {
     setQuestionSetName([

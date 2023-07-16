@@ -1,0 +1,48 @@
+.OQSet-questionWrapper{
+    display: flex;
+}
+.OQSet-QuestionMenu{
+    width: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #EDF5F3;
+    opacity: 0;
+}
+
+.OQSet-QuestionMenu:hover{
+    opacity: 100;
+    cursor: pointer;
+}
+
+.OQSet-questionWrapper:hover{
+    background-color: #EDF5F3;
+}
+
+.OQSet-questionWrapper:hover > .OQSet-QuestionMenu{
+    opacity: 100;
+}
+
+.OQSet-question{
+width: 100%;
+}
+
+.OQSet-titleWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.OQSet-titleWrapper:hover{
+    background-color: #EDF5F3;
+}
+
+.OQSet-titleMenu{
+    opacity: 0;
+}
+
+.OQSet-titleWrapper:hover > .OQSet-titleMenu{
+    opacity: 100;
+    cursor: pointer;
+}

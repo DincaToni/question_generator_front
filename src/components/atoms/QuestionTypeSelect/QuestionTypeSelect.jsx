@@ -3,9 +3,9 @@ const QuestionTypeSelect = (props) => {
     <>
       <select onChange={props.onChange}>
         <option hidden>Selectează</option>
-        <option value="Intrebare Libera">Intrebari libere</option>
+        <option value="1">Intrebari libere</option>
         <option value="ansChoice">Grilă</option>
-        <option value="completeField">Completează spațiul liber</option>
+        <option value="2">Adevarat/Fals</option>
       </select>
     </>
   );

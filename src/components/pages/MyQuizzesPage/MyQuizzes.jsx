@@ -1,15 +1,9 @@
 import "./MyQuizzes.css";
 import Menu from "../../templates/menu/Menu";
 import QuizzDisplay from "../../molecules/QuizzDisplay/QuizzDisplay";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { useGetQuizzesQuery } from "../../../slices/quizzApiSlice";
 
 const MyQuizzes = (props) => {
-  const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
   const { data, isLoading, error } = useGetQuizzesQuery();
 
   return (
@@ -30,6 +24,7 @@ const MyQuizzes = (props) => {
                     index % 2 === 0 ? "blackOnGreen" : "blackOnWhite"
                   }
                   quizzTitle={quizz.quizzTitle}
+                  quizId={quizz._id}
                 />
               ))}
             </>

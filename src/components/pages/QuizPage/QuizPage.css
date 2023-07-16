@@ -1,0 +1,53 @@
+.QuizPageWrapper{
+    display: flex;
+}
+
+.Quiz-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.Quiz-title{
+    margin-bottom: 30px;
+}
+
+.QuestionSetMenu{
+    min-width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    opacity:0;
+}
+
+.QuestionSetMenu:hover{
+    opacity: 100;
+    cursor: pointer;
+    background-color: #EDF5F3;
+}
+
+.Quiz-questionSet{
+    width: 100%;
+}
+
+.QuestionSetMenu:hover + .Quiz-questionSet{
+    background-color: #EDF5F3;
+}
+
+.Quiz-questionSetWrapper{
+    width: 100%;
+    display: flex;
+}
+
+.Quiz-paperSize{
+    max-width: 210mm;
+}
+
+.Quiz-PageBottomButton{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}

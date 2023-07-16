@@ -1,6 +1,7 @@
 .MenuWrapper{
     background-color: #80A3A2;
     width: 360px;
+    min-width: 360px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
