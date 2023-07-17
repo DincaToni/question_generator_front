@@ -11,14 +11,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     getQuizzes: builder.query({
-      query: () => ({
-        url: ` http://localhost:5000${QUIZZES_URL}/`,
+      query: (data) => ({
+        url: ` http://localhost:5000${QUIZZES_URL}/${data}`,
         method: "GET",
       }),
     }),
     getQuizById: builder.query({
       query: (data) => ({
-        url: ` http://localhost:5000${QUIZZES_URL}/${data}`,
+        url: ` http://localhost:5000${QUIZZES_URL}/quiz/${data}`,
         method: "GET",
       }),
     }),
