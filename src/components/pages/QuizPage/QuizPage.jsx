@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import StandardButton from "../../atoms/buttons/StandardButton/StandardButton";
 import { useState, useEffect } from "react";
+import JsPDF from "jspdf";
 
 const QuizPage = (props) => {
   let { state } = useLocation();
@@ -26,6 +27,13 @@ const QuizPage = (props) => {
     setQuiz(data);
     console.log(data);
   }, [data]);
+
+  const generatePDF = () => {
+    const testPDF = new JsPDF("portrait", "pt", "a4");
+    testPDF.html(document.querySelector("#testPDF")).then(() => {
+      testPDF.save("test.pdf");
+    });
+  };
 
   const ArrowUpClick = (quiz, index) => {
     let newQuestionSets = [...quiz.questionSets];
@@ -86,7 +94,7 @@ const QuizPage = (props) => {
         <h1>Loading...</h1>
       ) : quiz ? (
         <div className="Quiz-content">
-          <div className="Quiz-paperSize">
+          <div id="testPDF" className="Quiz-paperSize">
             <div className="Quiz-title">
               <Title>{quiz.quizzTitle}</Title>
             </div>
@@ -145,7 +153,11 @@ const QuizPage = (props) => {
             <StandardButton size="medium" colorScheme="green">
               Salvează modificările
             </StandardButton>
-            <StandardButton size="medium" colorScheme="blackOnGreen">
+            <StandardButton
+              onClick={generatePDF}
+              size="medium"
+              colorScheme="blackOnGreen"
+            >
               Descarcă <FiDownload />
             </StandardButton>
             <StandardButton size="medium" colorScheme="blackOnGreen">
