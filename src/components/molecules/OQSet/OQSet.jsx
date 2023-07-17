@@ -18,15 +18,37 @@ const OQSet = (props) => {
             <FiEye />
           </div>
         </div>
-        {props.setData.questions.map((question) => (
+        {props.setData.questions.map((question, index) => (
           <div className="OQSet-questionWrapper">
             <div className="OQSet-question">
               <p>{question}</p>
             </div>
             <div className="OQSet-QuestionMenu">
-              <FiXCircle />
-              <FiArrowUpCircle />
-              <FiArrowDownCircle />
+              <div
+                onClick={() => {
+                  props.XClickQuestion(props.quiz, props.setIndex, index);
+                }}
+              >
+                <FiXCircle />
+              </div>
+              <div
+                onClick={() => {
+                  props.ArrowUpClickQuestion(props.quiz, props.setIndex, index);
+                }}
+              >
+                <FiArrowUpCircle />
+              </div>
+              <div
+                onClick={() => {
+                  props.ArrowDownClickQuestion(
+                    props.quiz,
+                    props.setIndex,
+                    index
+                  );
+                }}
+              >
+                <FiArrowDownCircle />
+              </div>
             </div>
           </div>
         ))}

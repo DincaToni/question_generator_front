@@ -14,37 +14,128 @@ import {
   FiPrinter,
 } from "react-icons/fi";
 import StandardButton from "../../atoms/buttons/StandardButton/StandardButton";
+import { useState, useEffect } from "react";
 
 const QuizPage = (props) => {
   let { state } = useLocation();
 
   const { data, isLoading, error } = useGetQuizByIdQuery(state);
-  console.log(data);
+
+  const [quiz, setQuiz] = useState();
+  useEffect(() => {
+    setQuiz(data);
+    console.log(data);
+  }, [data]);
+
+  const ArrowUpClick = (quiz, index) => {
+    let newQuestionSets = [...quiz.questionSets];
+    const qs = newQuestionSets.splice(index, 1);
+    newQuestionSets.splice(index - 1, 0, qs[0]);
+    const quizCopy = Object.assign({}, quiz);
+    quizCopy.questionSets = [...newQuestionSets];
+    setQuiz(quizCopy);
+  };
+
+  const ArrowDownClick = (quiz, index) => {
+    let newQuestionSets = [...quiz.questionSets];
+    const qs = newQuestionSets.splice(index, 1);
+    newQuestionSets.splice(index + 1, 0, qs[0]);
+    const quizCopy = Object.assign({}, quiz);
+    quizCopy.questionSets = [...newQuestionSets];
+    setQuiz(quizCopy);
+  };
+
+  const XClick = (quiz, index) => {
+    let newQuestionSets = [...quiz.questionSets];
+    newQuestionSets.splice(index, 1);
+    const quizCopy = Object.assign({}, quiz);
+    quizCopy.questionSets = [...newQuestionSets];
+    setQuiz(quizCopy);
+  };
+
+  const ArrowUpClickQuestion = (quiz, setIndex, questionIndex) => {
+    let newQuestionSet = [...quiz.questionSets[setIndex].questions];
+    const q = newQuestionSet.splice(questionIndex, 1);
+    newQuestionSet.splice(questionIndex - 1, 0, q[0]);
+    const quizCopy = structuredClone(quiz);
+    quizCopy.questionSets[setIndex].questions = [...newQuestionSet];
+    setQuiz(quizCopy);
+  };
+
+  const ArrowDownClickQuestion = (quiz, setIndex, questionIndex) => {
+    let newQuestionSet = [...quiz.questionSets[setIndex].questions];
+    const q = newQuestionSet.splice(questionIndex, 1);
+    newQuestionSet.splice(questionIndex + 1, 0, q[0]);
+    const quizCopy = structuredClone(quiz);
+    quizCopy.questionSets[setIndex].questions = [...newQuestionSet];
+    setQuiz(quizCopy);
+  };
+
+  const XClickQuestion = (quiz, setIndex, questionIndex) => {
+    let newQuestionSet = [...quiz.questionSets[setIndex].questions];
+    newQuestionSet.splice(questionIndex, 1);
+    const quizCopy = structuredClone(quiz);
+    quizCopy.questionSets[setIndex].questions = [...newQuestionSet];
+    setQuiz(quizCopy);
+  };
+
   return (
     <div className="QuizPageWrapper">
       <Menu />
-      {isLoading ? (
+      {!quiz ? (
         <h1>Loading...</h1>
-      ) : (
+      ) : quiz ? (
         <div className="Quiz-content">
           <div className="Quiz-paperSize">
             <div className="Quiz-title">
-              <Title>{data.quizzTitle}</Title>
+              <Title>{quiz.quizzTitle}</Title>
             </div>
-            {data.questionSets.map((set) => (
+            {quiz.questionSets.map((set, index) => (
               <div className="Quiz-questionSetWrapper">
                 <div className="QuestionSetMenu">
                   <IconContext.Provider value={{ size: "44px" }}>
-                    <FiXCircle />
-                    <FiArrowUpCircle />
-                    <FiArrowDownCircle />
+                    <div
+                      onClick={(e) => {
+                        XClick(quiz, index);
+                      }}
+                    >
+                      <FiXCircle />
+                    </div>
+                    <div
+                      onClick={(e) => {
+                        ArrowUpClick(quiz, index);
+                      }}
+                    >
+                      <FiArrowUpCircle />
+                    </div>
+                    <div
+                      onClick={(e) => {
+                        ArrowDownClick(quiz, index);
+                      }}
+                    >
+                      <FiArrowDownCircle />
+                    </div>
                   </IconContext.Provider>
                 </div>
                 <div className="Quiz-questionSet">
                   {set.questionType === 1 ? (
-                    <OQSet setData={set} />
+                    <OQSet
+                      setData={set}
+                      ArrowUpClickQuestion={ArrowUpClickQuestion}
+                      ArrowDownClickQuestion={ArrowDownClickQuestion}
+                      XClickQuestion={XClickQuestion}
+                      setIndex={index}
+                      quiz={quiz}
+                    />
                   ) : set.questionType === 2 ? (
-                    <BoolQuestionSet setData={set} />
+                    <BoolQuestionSet
+                      setData={set}
+                      ArrowUpClickQuestion={ArrowUpClickQuestion}
+                      ArrowDownClickQuestion={ArrowDownClickQuestion}
+                      XClickQuestion={XClickQuestion}
+                      setIndex={index}
+                      quiz={quiz}
+                    />
                   ) : null}
                 </div>
               </div>
@@ -62,7 +153,9 @@ const QuizPage = (props) => {
             </StandardButton>
           </div>
         </div>
-      )}
+      ) : error ? (
+        <h1>{error.message}</h1>
+      ) : null}
     </div>
   );
 };
