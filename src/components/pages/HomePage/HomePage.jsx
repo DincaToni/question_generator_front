@@ -33,6 +33,7 @@ function HomePage(props) {
 
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.auth);
+  const user = userInfo._id;
 
   const dispatch = useDispatch();
 
@@ -66,11 +67,7 @@ function HomePage(props) {
       });
     });
     try {
-      await addQuizz({
-        quizzTitle,
-        inputPrompt: prompt,
-        questionSets,
-      });
+      await addQuizz({ user, quizzTitle, inputPrompt: prompt, questionSets });
       toast.success("Test adăugat");
       //dispatch(setCredentials({ ...res }));
       //navigate("/");
