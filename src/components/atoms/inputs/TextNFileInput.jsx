@@ -3,11 +3,11 @@ import "./TextNFileInput.css";
 function TextNFileInput(props) {
   return (
     <div className="textInputWrapper">
-      <input
+      <textarea
         className="textInput"
         type="text"
         onChange={props.onChange}
-      ></input>
+      ></textarea>
     </div>
   );
 }

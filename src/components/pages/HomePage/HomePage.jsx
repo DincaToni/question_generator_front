@@ -11,8 +11,10 @@ import { useLogoutMutation } from "../../../slices/userApiSlice";
 import { logout } from "../../../slices/authSlice";
 import { useAddQuizzMutation } from "../../../slices/quizzApiSlice";
 import { toast } from "react-toastify";
+import Loader from "../../atoms/loader/Loader";
 
 function HomePage(props) {
+  const [isLoading, setIsLoading] = useState(false);
   const [wasRemoved, setWasRemoved] = useState(false);
   const [diff, setDiff] = useState(1);
   const [prompt, setPrompt] = useState("");
@@ -76,6 +78,7 @@ function HomePage(props) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     let questionSets = [];
     questionSetList.map((questionSet) => {
       questionSets.push({
@@ -89,6 +92,7 @@ function HomePage(props) {
     try {
       await addQuizz({ user, quizzTitle, inputPrompt: prompt, questionSets });
       toast.success("Test adăugat");
+      setIsLoading(false);
       //dispatch(setCredentials({ ...res }));
       //navigate("/");
     } catch (err) {
@@ -189,6 +193,11 @@ function HomePage(props) {
 
   return (
     <>
+      {isLoading ? (
+        <div className="HomePage-loader">
+          <Loader />
+        </div>
+      ) : null}
       <div className="HomePageWrapper">
         <Menu onLogout={logoutHandler} profileSectionData={userInfo.name} />
         <div className="HomePageContent">
