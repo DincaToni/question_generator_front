@@ -13,6 +13,7 @@ function AddSetCard(props) {
           <SetTitleInput
             setNo={props.setNo}
             onChange={props.questionNameHandler}
+            nameValue={props.nameValue}
           />
         </div>
         <div className="SetCardContent">
@@ -21,11 +22,17 @@ function AddSetCard(props) {
           </ToggleSwitch>
           <div>
             <TextLabel color="black">Tip întrebări</TextLabel>
-            <QuestionTypeSelect onChange={props.questionTypeHandler} />
+            <QuestionTypeSelect
+              onChange={props.questionTypeHandler}
+              questionType={props.questionType}
+            />
           </div>
           <div>
             <TextLabel color="black">Număr întrebări</TextLabel>
-            <NumberInput onChange={props.nrOfQuestionsHandler} />
+            <NumberInput
+              onChange={props.nrOfQuestionsHandler}
+              nrOfQuestions={props.nrOfQuestions}
+            />
           </div>
           <ToggleSwitch
             color="black"
@@ -33,7 +40,7 @@ function AddSetCard(props) {
           >
             Amestecă ordinea întrebărilor în interiorul setului
           </ToggleSwitch>
-          <button>Șterge set</button>
+          <button onClick={props.deleteQuestionSetHandler}>Șterge set</button>
         </div>
       </div>
     </div>

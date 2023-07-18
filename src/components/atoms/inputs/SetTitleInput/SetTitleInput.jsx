@@ -6,6 +6,7 @@ const SetTitleInput = (props) => {
       <input
         className="SetTitleInput"
         type="text"
+        value={props.nameValue}
         placeholder={`Set întrebări ${props.setNo + 1}`}
         onChange={props.onChange}
       />

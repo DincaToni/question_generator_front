@@ -13,6 +13,8 @@ import { useAddQuizzMutation } from "../../../slices/quizzApiSlice";
 import { toast } from "react-toastify";
 
 function HomePage(props) {
+  const [wasRemoved, setWasRemoved] = useState(false);
+  const [diff, setDiff] = useState(1);
   const [prompt, setPrompt] = useState("");
   const [questionSetName, setQuestionSetName] = useState([]);
   const [isNameHidden, setIsNameHidden] = useState([false]);
@@ -25,11 +27,29 @@ function HomePage(props) {
   const quizzTitle = "Test";
 
   useEffect(() => {
-    setQuestionSetName([
-      ...questionSetName,
-      `Set întrebări ${questionSetList[questionSetList.length - 1] + 1}`,
-    ]);
+    if (!wasRemoved) {
+      setQuestionSetName([
+        ...questionSetName,
+        `Set întrebări ${questionSetList[questionSetList.length - 1] + diff}`,
+      ]);
+    }
   }, [questionSetList]);
+
+  useEffect(() => {
+    console.log("qsl: " + questionSetList);
+    console.log("qsn: " + questionSetName);
+    console.log("nh: " + isNameHidden);
+    console.log("qt: " + questionType);
+    console.log("nr: " + nrOfQuestions);
+    console.log("or: " + isQuestionOrderRandomised);
+  }, [
+    questionSetList,
+    questionSetName,
+    isNameHidden,
+    questionType,
+    nrOfQuestions,
+    isQuestionOrderRandomised,
+  ]);
 
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.auth);
@@ -77,7 +97,40 @@ function HomePage(props) {
     }
   };
 
+  const deleteQuestionSetHandler = (index) => (e) => {
+    console.log("i:" + index);
+    let tempQuestionSetList = [...questionSetList];
+    tempQuestionSetList.splice(index, 1);
+    tempQuestionSetList = tempQuestionSetList.map((ind) =>
+      ind > index ? ind - 1 : ind
+    );
+    setDiff(diff + 1);
+    setWasRemoved(true);
+    setQuestionSetList([...tempQuestionSetList]);
+
+    const tempQuestionSetName = [...questionSetName];
+    tempQuestionSetName.splice(index, 1);
+    setQuestionSetName([...tempQuestionSetName]);
+
+    const tempIsNameHidden = [...isNameHidden];
+    tempIsNameHidden.splice(index, 1);
+    setIsNameHidden([...tempIsNameHidden]);
+
+    const tempQuestionType = [...questionType];
+    tempQuestionType.splice(index, 1);
+    setQuestionType([...tempQuestionType]);
+
+    const tempNrOfQuestions = [...nrOfQuestions];
+    tempNrOfQuestions.splice(index, 1);
+    setNrOfQuestions([...tempNrOfQuestions]);
+
+    const tempIsQuestionOrderRandomised = [...isQuestionOrderRandomised];
+    tempIsQuestionOrderRandomised.splice(index, 1);
+    setIsQuestionOrderRandomised([...tempIsQuestionOrderRandomised]);
+  };
+
   const addQuestionSetHandler = () => {
+    setWasRemoved(false);
     console.log("setList: " + questionSetList);
     setQuestionSetList([...questionSetList, questionSetList.pop() + 1]);
 
@@ -144,11 +197,15 @@ function HomePage(props) {
             promptHandler={promptHandler}
             questionSetList={questionSetList}
             addQuestionSetHandler={addQuestionSetHandler}
+            nameValue={questionSetName}
             questionNameHandler={questionNameHandler}
             isNameHiddenHandler={isNameHiddenHandler}
+            questionType={questionType}
             questionTypeHandler={questionTypeHandler}
+            nrOfQuestions={nrOfQuestions}
             nrOfQuestionsHandler={nrOfQuestionsHandler}
             isQuestionOrderRandomizedHandler={isQuestionOrderRandomizedHandler}
+            deleteQuestionSetHandler={deleteQuestionSetHandler}
             submitHandler={submitHandler}
           />
         </div>

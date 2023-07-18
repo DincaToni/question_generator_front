@@ -16,10 +16,16 @@ function MainForm(props) {
           <AddSetCard
             setNo={questionSetNo}
             questionNameHandler={props.questionNameHandler(questionSetNo)}
+            nameValue={props.nameValue[questionSetNo]}
             isNameHiddenHandler={props.isNameHiddenHandler(questionSetNo)}
+            questionType={props.questionType[questionSetNo]}
             questionTypeHandler={props.questionTypeHandler(questionSetNo)}
+            nrOfQuestions={props.nrOfQuestions[questionSetNo]}
             nrOfQuestionsHandler={props.nrOfQuestionsHandler(questionSetNo)}
             isQuestionOrderRandomizedHandler={props.isQuestionOrderRandomizedHandler(
+              questionSetNo
+            )}
+            deleteQuestionSetHandler={props.deleteQuestionSetHandler(
               questionSetNo
             )}
           />
