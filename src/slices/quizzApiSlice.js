@@ -22,8 +22,18 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    removeQuizById: builder.mutation({
+      query: (data) => ({
+        url: ` http://localhost:5000${QUIZZES_URL}/quiz/${data}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useAddQuizzMutation, useGetQuizzesQuery, useGetQuizByIdQuery } =
-  usersApiSlice;
+export const {
+  useAddQuizzMutation,
+  useGetQuizzesQuery,
+  useGetQuizByIdQuery,
+  useRemoveQuizByIdMutation,
+} = usersApiSlice;

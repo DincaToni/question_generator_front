@@ -1,7 +1,10 @@
 import "./MyQuizzes.css";
 import Menu from "../../templates/menu/Menu";
 import QuizzDisplay from "../../molecules/QuizzDisplay/QuizzDisplay";
-import { useGetQuizzesQuery } from "../../../slices/quizzApiSlice";
+import {
+  useGetQuizzesQuery,
+  useRemoveQuizByIdMutation,
+} from "../../../slices/quizzApiSlice";
 import { useSelector } from "react-redux";
 
 const MyQuizzes = (props) => {
@@ -9,6 +12,13 @@ const MyQuizzes = (props) => {
   const uid = userInfo._id;
 
   const { data, isLoading, error } = useGetQuizzesQuery(uid);
+  const [removeQuiz] = useRemoveQuizByIdMutation();
+
+  const removeQuizHandler = (quizId) => async (e) => {
+    e.preventDefault();
+    console.log("click");
+    await removeQuiz(quizId);
+  };
 
   return (
     <div className="MyQuizzesPageWrapper">
@@ -32,6 +42,7 @@ const MyQuizzes = (props) => {
                     }
                     quizzTitle={quizz.quizzTitle}
                     quizId={quizz._id}
+                    removeQuizHandler={removeQuizHandler}
                   />
                 ))}
               </>

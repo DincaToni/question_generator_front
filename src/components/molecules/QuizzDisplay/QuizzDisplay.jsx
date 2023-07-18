@@ -22,13 +22,7 @@ const QuizzDisplay = (props) => {
           ultima modificare
         </TextLabel>
       </div>
-      <StandardButton
-        size="icon-small"
-        edge="round"
-        colorScheme={props.buttonsColorScheme}
-      >
-        PDF {<FiDownload />}
-      </StandardButton>
+
       <StandardButton
         size="icon-small"
         edge="round"
@@ -40,6 +34,7 @@ const QuizzDisplay = (props) => {
         size="icon-small"
         edge="round"
         colorScheme={props.buttonsColorScheme}
+        onClick={props.removeQuizHandler(props.quizId)}
       >
         <FiX />
       </StandardButton>
