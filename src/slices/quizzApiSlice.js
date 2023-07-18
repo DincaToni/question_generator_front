@@ -15,18 +15,21 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: ` http://localhost:5000${QUIZZES_URL}/${data}`,
         method: "GET",
       }),
+      providesTags: ["Quiz"],
     }),
     getQuizById: builder.query({
       query: (data) => ({
         url: ` http://localhost:5000${QUIZZES_URL}/quiz/${data}`,
         method: "GET",
       }),
+      providesTags: ["Quiz"],
     }),
     removeQuizById: builder.mutation({
       query: (data) => ({
         url: ` http://localhost:5000${QUIZZES_URL}/quiz/${data}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Quiz"],
     }),
   }),
 });

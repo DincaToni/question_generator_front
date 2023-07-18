@@ -11,7 +11,7 @@ const MyQuizzes = (props) => {
   const { userInfo } = useSelector((state) => state.auth);
   const uid = userInfo._id;
 
-  const { data, isLoading, error } = useGetQuizzesQuery(uid);
+  let { data, isLoading, error } = useGetQuizzesQuery(uid);
   const [removeQuiz] = useRemoveQuizByIdMutation();
 
   const removeQuizHandler = (quizId) => async (e) => {
